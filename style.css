@@ -32,7 +32,7 @@ body {
 }
 
 .content {
-  width: min(680px, 100%);
+  width: min(960px, 100%);
 }
 
 h1 {
