@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, "Courier New", monospace;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+  color: #fff7e8;
+}
+
+body {
+  /* background: #d70c47; */
+  /* color: #fff7e8; */
+}
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 1.5rem;
+  overflow: hidden;
+
+  background: linear-gradient(rgba(215, 12, 71, 0.85), rgba(215, 12, 71, 0.85)), url("media/your-image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: grid;
+  place-items: center;
+}
+
+.content {
+  width: min(680px, 100%);
+}
+
+h1 {
+  margin: 0 0 1rem 0;
+  font-size: clamp(2.2rem, 7vw, 4.75rem);
+  line-height: 0.95;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: -0.04em;
+}
+
+.intro {
+  margin: 0 auto 2rem auto;
+  max-width: 38rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.6;
+  color: rgba(255, 247, 232, 0.88);
+}
+
+.coffee-wrapper {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 3px solid #111111;
+  border-radius: 1.25rem;
+  background: #fff7e8;
+  color: #111111;
+  box-shadow: 10px 10px 0 #111111;
+}
+
+.coffee-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.75;
+}
+
+#coffee-message {
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  line-height: 1.5;
+}
+
+#coffee-countdown {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+@media (max-width: 600px) {
+  .coffee-wrapper {
+    padding: 1.1rem;
+    border-radius: 1rem;
+    box-shadow: 7px 7px 0 #111111;
+  }
+
+  .intro {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.link-container {
+  margin-top: 2rem;
+}
+
+.link-container a {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+
+  background: #111111;
+  color: #fff7e8;
+
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+
+  border: 2px solid #111111;
+  border-radius: 999px;
+
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+
+  box-shadow: 4px 4px 0 #111111;
+}
+
+/* hover = invert + slight lift */
+.link-container a:hover {
+  background: #fff7e8;
+  color: #111111;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #111111;
+}
+
+/* click = press down */
+.link-container a:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #111111;
+}
