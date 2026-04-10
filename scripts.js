@@ -92,42 +92,25 @@ function getCurrentTimeInZone(timeZone) {
 
 function getNextFriday8am(timeZone) {
   const now = new Date();
+
   const zoned = getZonedParts(now, timeZone);
 
-  const weekdayMap = {
-    Sun: 0,
-    Mon: 1,
-    Tue: 2,
-    Wed: 3,
-    Thu: 4,
-    Fri: 5,
-    Sat: 6,
-  };
-
+  const weekdayMap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
   const currentDay = weekdayMap[zoned.weekday];
-  const friday = 5;
 
-  let daysUntilFriday = (friday - currentDay + 7) % 7;
+  let daysUntilFriday = (5 - currentDay + 7) % 7;
 
-  const isFridayAfterOrAt8 =
-    currentDay === friday &&
-    (zoned.hour > 8 || (zoned.hour === 8 && zoned.minute >= 0) || zoned.hour >= 9 || zoned.hour >= 10);
-
-  if (currentDay === friday && zoned.hour >= 8) {
+  if (currentDay === 5 && zoned.hour >= 8) {
     daysUntilFriday = 7;
   }
 
   const target = new Date(now);
-  target.setUTCDate(target.getUTCDate() + daysUntilFriday);
+  target.setDate(target.getDate() + daysUntilFriday);
 
-  const targetParts = getZonedParts(target, timeZone);
+  // set to 8:00am LOCAL first
+  target.setHours(8, 0, 0, 0);
 
-  const approxTarget = new Date(Date.UTC(targetParts.year, targetParts.month - 1, targetParts.day, 8, 0, 0));
-
-  const offsetGuess = new Date(approxTarget.toLocaleString("en-US", { timeZone }));
-  const actualTarget = new Date(approxTarget.getTime() + (approxTarget.getTime() - offsetGuess.getTime()));
-
-  return actualTarget;
+  return target;
 }
 
 function isCoffeeCurrentlyHappening(timeZone) {
